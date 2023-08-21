@@ -36,7 +36,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-moolleer-p5grouppix-p640he6xc71.ws-eu102.gitpod.io'
+    '8000-moolleer-p5grouppix-p640he6xc71.ws-eu102.gitpod.io',
+    '8000-moolleer-p5grouppix-p640he6xc71.ws-eu104.gitpod.io',
 ]
 
 
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'rest_framework',
 
     'profiles',
 ]
