@@ -1,6 +1,6 @@
 from django.http import Http404
 from rest_framework.views import APIView
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from .models import Profile
 from .serializers import ProfileSerializer
@@ -31,7 +31,9 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
 
     def delete(self, request, *args, **kwargs):
         instance = self.get_object()
-        user = instance.owner  
+        user = instance.owner
         self.perform_destroy(instance)
-        user.delete() 
-        return Response({"message": "User and profile successfully deleted."}, status=status.HTTP_204_NO_CONTENT)
+        user.delete()
+        return Response(
+            {"message": "User and profile successfully deleted."},
+            status=status.HTTP_204_NO_CONTENT)
