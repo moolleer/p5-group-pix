@@ -22,21 +22,35 @@ class GroupList(generics.ListCreateAPIView):
 
 
 class GroupDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve, update, or delete a specific group.
+    Only the group owner can perform update and delete actions.
+    """
     queryset = Group.objects.all()
     serializer_class = GroupDetailSerializer
     permission_classes = [permissions.IsAuthenticated, IsGroupOwnerOrReadOnly]
 
 
-class GroupMembershipList(generics.ListCreateAPIView):
+class GroupMembershipList(generics.ListAPIView):
+    """
+    List all group memberships of the requesting user
+    """
     serializer_class = GroupMembershipSerializer
     permission_classes = [permissions.IsAuthenticated, IsGroupMember]
 
     def get_queryset(self):
+        """
+        Return a queryset of group memberships belonging
+        to the requesting user.
+        """
         user = self.request.user
         return GroupMembership.objects.filter(user=user)
 
 
 class GroupJoinView(generics.CreateAPIView):
+    """
+    Join a group or check if the requesting user is already a member.
+    """
     serializer_class = GroupMembershipSerializer
     permission_classes = [permissions.IsAuthenticated, IsGroupMember]
 
@@ -69,6 +83,9 @@ class GroupJoinView(generics.CreateAPIView):
 
 
 class GroupMembershipLeave(APIView):
+    """
+    Leave a group or check membership status and group details.
+    """
     permission_classes = [permissions.IsAuthenticated, IsGroupMember]
 
     def get(self, request, pk, format=None):
