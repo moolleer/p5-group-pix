@@ -14,13 +14,19 @@ class GroupSerializer(serializers.ModelSerializer):
 
 
 class GroupDetailSerializer(GroupSerializer):
-    members = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    members = serializers.SerializerMethodField()
 
     class Meta(GroupSerializer.Meta):
         fields = GroupSerializer.Meta.fields + ['members']
 
+    def get_members(self, obj):
+        return [member.username for member in obj.members.all()]
+
 
 class GroupMembershipSerializer(serializers.ModelSerializer):
+    user = serializers.ReadOnlyField(source='user.username')
+    group = serializers.ReadOnlyField(source='group.name')
+
     class Meta:
         model = GroupMembership
-        fields = ['user', 'group', 'joined_at']
+        fields = ['id', 'user', 'group', 'joined_at']
