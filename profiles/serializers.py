@@ -1,9 +1,15 @@
+from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Profile
 
 
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
+    join_date = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S %Z')
+    last_login = serializers.SerializerMethodField()
+
+    def get_last_login(self, obj):
+        return naturaltime(obj.last_login)
     # is_owner = serializers.SerializerMethodField()
 
     # def get_is_owner(self, obj):

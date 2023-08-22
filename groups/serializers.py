@@ -4,6 +4,7 @@ from .models import Group, GroupMembership
 
 class GroupSerializer(serializers.ModelSerializer):
     created_by = serializers.ReadOnlyField(source='created_by.username')
+    created_at = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S %Z')
 
     class Meta:
         model = Group
@@ -26,6 +27,7 @@ class GroupDetailSerializer(GroupSerializer):
 class GroupMembershipSerializer(serializers.ModelSerializer):
     user = serializers.ReadOnlyField(source='user.username')
     group = serializers.ReadOnlyField(source='group.name')
+    joined_at = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S %Z')
 
     class Meta:
         model = GroupMembership
