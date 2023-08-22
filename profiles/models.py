@@ -6,6 +6,9 @@ from django.dispatch import receiver
 
 
 class Profile(models.Model):
+    """
+    Model representing user profiles.
+    """
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     join_date = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now=True)
