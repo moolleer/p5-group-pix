@@ -7,13 +7,25 @@ class GroupSerializer(serializers.ModelSerializer):
     Serializer for the Group model.
     """
     created_by = serializers.ReadOnlyField(source='created_by.username')
-    created_at = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S %Z')
+    created_at = serializers.DateTimeField(
+        format='%Y-%m-%d %H:%M:%S %Z', read_only=True)
+    is_creator = serializers.SerializerMethodField()
+    is_member = serializers.SerializerMethodField()
+
+    def get_is_creator(self, obj):
+        request = self.context['request']
+        return request.user == obj.created_by
+
+    def get_is_member(self, obj):
+        request = self.context['request']
+        return obj.members.filter(id=request.user.id).exists()
 
     class Meta:
         model = Group
         fields = [
             'id', 'name', 'description',
-            'created_by', 'created_at',
+            'created_by', 'created_at', 'is_creator',
+            'is_member',
         ]
 
 
@@ -39,9 +51,11 @@ class GroupMembershipSerializer(serializers.ModelSerializer):
     Provides a read-only representation of GroupMembership instance.
     """
     user = serializers.ReadOnlyField(source='user.username')
-    group = serializers.ReadOnlyField(source='group.name')
-    joined_at = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S %Z')
+    group_name = serializers.ReadOnlyField(source='group.name')
+    group_id = serializers.ReadOnlyField(source='group.pk')
+    joined_at = serializers.DateTimeField(
+        format='%Y-%m-%d %H:%M:%S %Z', read_only=True)
 
     class Meta:
         model = GroupMembership
-        fields = ['id', 'user', 'group', 'joined_at']
+        fields = ['id', 'user', 'group_id', 'group_name', 'joined_at']

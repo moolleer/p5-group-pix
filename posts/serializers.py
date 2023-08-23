@@ -4,8 +4,12 @@ from .models import Post
 
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    created_at = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S %Z')
-    updated_at = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S %Z')
+    group = serializers.ReadOnlyField(source='group.name')
+    is_owner = serializers.SerializerMethodField()
+    created_at = serializers.DateTimeField(
+        format='%Y-%m-%d %H:%M:%S %Z', read_only=True)
+    updated_at = serializers.DateTimeField(
+        format='%Y-%m-%d %H:%M:%S %Z', read_only=True)
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
 
     def validate_image(self, value):
@@ -22,10 +26,14 @@ class PostSerializer(serializers.ModelSerializer):
             )
         return value
 
+    def get_is_owner(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
+
     class Meta:
         model = Post
         fields = [
             'id', 'owner', 'group', 'title',
             'content', 'image', 'created_at', 'updated_at',
-            'profile_image',
+            'profile_image', 'is_owner',
         ]
