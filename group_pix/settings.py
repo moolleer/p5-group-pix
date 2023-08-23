@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'groups',
     'posts',
     'comments',
+    'discussions',
 ]
 
 MIDDLEWARE = [

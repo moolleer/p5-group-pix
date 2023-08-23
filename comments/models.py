@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from posts.models import Post
-from discussion.models import Discussion
+from discussions.models import Discussion
 
 
 class Comment(models.Model):
