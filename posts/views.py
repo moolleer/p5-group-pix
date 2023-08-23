@@ -58,3 +58,13 @@ class PostList(generics.ListAPIView):
     def get_queryset(self):
         group_pk = self.kwargs['pk']
         return Post.objects.filter(group__pk=group_pk)
+
+
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve a post if a user is logged in, edit or delete
+    it if the user owns it.
+    """
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
