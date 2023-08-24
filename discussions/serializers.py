@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import Discussion
+from groups.models import Group
 from comments.models import Comment
+from comments.serializers import CommentSerializer
 
 
 class DiscussionSerializer(serializers.ModelSerializer):
@@ -9,7 +11,8 @@ class DiscussionSerializer(serializers.ModelSerializer):
     """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
-    comments = CommentSerializer(many=True, read_only=True)
+    group = serializers.ReadOnlyField(source='group.name')
+
     created_at = serializers.DateTimeField(
         format='%Y-%m-%d %H:%M:%S %Z', read_only=True)
 
@@ -21,5 +24,15 @@ class DiscussionSerializer(serializers.ModelSerializer):
         model = Discussion
         fields = [
             'id', 'group', 'owner', 'title', 'content',
-            'created_at', 'is_owner', 'comments',
+            'created_at', 'is_owner',
         ]
+
+
+class DiscussionDetailSerializer(DiscussionSerializer):
+    """
+    Serializer for the DiscussionDetail view
+    """
+    comments = CommentSerializer(many=True, read_only=True)
+
+    class Meta(DiscussionSerializer.Meta):
+        fields = DiscussionSerializer.Meta.fields
