@@ -37,9 +37,10 @@ class DiscussionDetailView(generics.RetrieveAPIView):
             group__pk=group_pk).prefetch_related('comments')
 
 
-class DiscussionDetailCreator(generics.RetrieveUpdateDestroyAPIView):
+class DiscussionDetailOwner(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DiscussionSerializer
     permission_classes = [
         permissions.IsAuthenticated, IsGroupCreatorDiscussion
     ]
     queryset = Discussion.objects.all()
+    lookup_url_kwarg = 'discussion_pk'
