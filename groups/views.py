@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions, status, filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Group, GroupMembership
@@ -15,7 +16,9 @@ class GroupList(generics.ListCreateAPIView):
     """
     List all groups
     """
-    queryset = Group.objects.all()
+    queryset = Group.objects.annotate(
+        member_count=Count('members')
+        ).order_by('-created_at')
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
@@ -28,6 +31,7 @@ class GroupList(generics.ListCreateAPIView):
     ]
     filterset_fields = ['created_by__username']
     search_fields = ['name', 'created_by__username', 'description']
+    ordering_fields = ['member_count']
 
 
 class GroupDetail(generics.RetrieveUpdateDestroyAPIView):

@@ -11,6 +11,7 @@ class GroupSerializer(serializers.ModelSerializer):
         format='%Y-%m-%d %H:%M:%S %Z', read_only=True)
     is_creator = serializers.SerializerMethodField()
     is_member = serializers.SerializerMethodField()
+    member_count = serializers.ReadOnlyField()
 
     def get_is_creator(self, obj):
         request = self.context['request']
@@ -25,7 +26,7 @@ class GroupSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'name', 'description',
             'created_by', 'created_at', 'is_creator',
-            'is_member',
+            'is_member', 'member_count',
         ]
 
 
