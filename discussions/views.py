@@ -1,4 +1,5 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from group_pix.permissions import (
     IsGroupMemberDiscussion,
     IsOwnerOrReadOnly,
@@ -24,6 +25,12 @@ class DiscussionListCreateView(generics.ListCreateAPIView):
         group_pk = self.kwargs['pk']
         group = Group.objects.get(pk=group_pk)
         serializer.save(owner=self.request.user, group=group)
+
+    filter_backends = [
+        DjangoFilterBackend, filters.SearchFilter
+    ]
+    filterset_fields = ['owner__profile']
+    search_fields = ['owner__username', 'title', 'content']
 
 
 class DiscussionDetailView(generics.RetrieveAPIView):
