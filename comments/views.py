@@ -52,12 +52,16 @@ class CommentList(generics.ListCreateAPIView):
 
 class CommentDetailDiscussion(generics.RetrieveUpdateDestroyAPIView):
 
-    permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = [
+        permissions.IsAuthenticated, IsGroupMemberOrCreatorPostOrDiscussion
+    ]
     queryset = Comment.objects.all()
     serializer_class = CommentDiscussionDetailSerializer
 
 
 class CommentDetailPost(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
+    permission_classes = [
+        permissions.IsAuthenticated, IsGroupMemberOrCreatorPostOrDiscussion
+    ]
     queryset = Comment.objects.all()
     serializer_class = CommentPostDetailSerializer
