@@ -1,5 +1,6 @@
-from rest_framework import generics, permissions, serializers, status
+from rest_framework import generics, permissions, serializers, status, filters
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 from .serializers import PostSerializer
 from .models import Post
 from groups.models import Group, GroupMembership
@@ -58,6 +59,12 @@ class PostList(generics.ListAPIView):
     def get_queryset(self):
         group_pk = self.kwargs['pk']
         return Post.objects.filter(group__pk=group_pk)
+
+    filter_backends = [
+        DjangoFilterBackend, filters.SearchFilter
+    ]
+    filterset_fields = ['owner__profile']
+    search_fields = ['owner__username', 'title', 'content']
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):

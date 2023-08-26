@@ -1,6 +1,8 @@
-from rest_framework import generics, permissions, status
+from rest_framework import generics, permissions, status, filters
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django_filters.rest_framework import DjangoFilterBackend
+
 from .models import Group, GroupMembership
 from .serializers import (
     GroupSerializer,
@@ -19,6 +21,13 @@ class GroupList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
+
+    filter_backends = [
+        DjangoFilterBackend, filters.SearchFilter,
+        filters.OrderingFilter,
+    ]
+    filterset_fields = ['created_by__username']
+    search_fields = ['name', 'created_by__username', 'description']
 
 
 class GroupDetail(generics.RetrieveUpdateDestroyAPIView):
