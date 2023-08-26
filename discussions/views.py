@@ -1,12 +1,14 @@
 from rest_framework import generics, permissions
 from group_pix.permissions import (
     IsGroupMemberDiscussion,
+    IsOwnerOrReadOnly,
     IsGroupCreatorDiscussion,
     IsGroupMemberOrCreator
     )
 from rest_framework.response import Response
 from .models import Discussion
 from groups.models import Group
+from comments.serializers import CommentDiscussionDetailSerializer
 from .serializers import DiscussionSerializer
 
 
@@ -40,7 +42,7 @@ class DiscussionDetailView(generics.RetrieveAPIView):
 class DiscussionDetailOwner(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DiscussionSerializer
     permission_classes = [
-        permissions.IsAuthenticated, IsGroupCreatorDiscussion
+        permissions.IsAuthenticated, IsOwnerOrReadOnly
     ]
     queryset = Discussion.objects.all()
     lookup_url_kwarg = 'discussion_pk'

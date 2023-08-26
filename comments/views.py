@@ -3,6 +3,7 @@ from django.shortcuts import Http404
 from rest_framework import generics, permissions
 from .models import Comment
 from discussions.models import Discussion
+from posts.models import Post
 from .serializers import (
     CommentSerializer,
     CommentDiscussionDetailSerializer,
@@ -46,7 +47,7 @@ class CommentList(generics.ListCreateAPIView):
             discussion_pk = self.kwargs['discussion_pk']
             discussion = Discussion.objects.get(
                 pk=discussion_pk, group__pk=group_pk)
-        serializer.save(owner=self.request.user, discussion=discussion)
+            serializer.save(owner=self.request.user, discussion=discussion)
 
 
 class CommentDetailDiscussion(generics.RetrieveUpdateDestroyAPIView):

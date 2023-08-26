@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Discussion
 from groups.models import Group
 from comments.models import Comment
-from comments.serializers import CommentSerializer
+from comments.serializers import CommentDiscussionDetailSerializer
 
 
 class DiscussionSerializer(serializers.ModelSerializer):
@@ -32,7 +32,7 @@ class DiscussionDetailSerializer(DiscussionSerializer):
     """
     Serializer for the DiscussionDetail view
     """
-    comments = CommentSerializer(many=True, read_only=True)
+    comments = CommentDiscussionDetailSerializer(many=True, read_only=True)
 
     class Meta(DiscussionSerializer.Meta):
-        fields = DiscussionSerializer.Meta.fields
+        fields = DiscussionSerializer.Meta.fields + ['comments']
