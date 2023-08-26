@@ -61,7 +61,8 @@ DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
-    'localhost', 'grouppix.herokuapp.com',
+    'localhost', 'grouppix-da64e56b2785.herokuapp.com',
+    '8000-moolleer-p5grouppix-p640he6xc71.ws-eu104.gitpod.io'
 ]
 
 
