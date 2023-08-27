@@ -3,11 +3,6 @@
   border: 2px solid #8c6e8c;
 }
 
-/* .Text {
-  color: #260925 !important;
-  font-weight: bold;
-} */
-
 .CustomNavbar {
   backdrop-filter: blur(20px); 
   background-color: rgba(255, 255, 255, 0.05);

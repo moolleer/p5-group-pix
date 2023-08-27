@@ -27,17 +27,17 @@ body {
       #ea818c);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .Main {
-  padding-top: 40px;
+  padding-top: 10px;
 }
 
-.FillerImage {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
+.Content {
+  background-color: #ffffff;
+  border-radius: 2px;
+  border: 1px solid #260925;
 }
 
 .Image {
@@ -78,4 +78,23 @@ i:hover {
   cursor: pointer;
   transition: color ease-in-out 0.3s;
   color: #CF6CC7;
+}
+
+figure {
+  text-align: center;
+  display: inline-block;
+}
+
+/* scrollbar */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+*::-webkit-scrollbar-thumb {
+  background: #888;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

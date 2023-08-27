@@ -1,0 +1,36 @@
+.Row {
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .Input {
+    background: #ffffff;
+    border: 1px solid #7F5C7B;
+    box-sizing: border-box;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .Link {
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    margin: 5px
+  }
+  
+  .Link span {
+    color: #e8717d;
+    font-weight: 600;
+  }
+  
+  .Container {
+    padding: 30px 10px;
+  }
+  
+  .SignInCol {
+    height: 320px;
+  }
+  
+  .SignUpCol {
+    height: 375px;
+  }
