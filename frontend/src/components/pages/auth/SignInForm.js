@@ -15,9 +15,11 @@ import appStyles from "../../../App.module.css";
 
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { useSetCurrentUser } from "../../../contexts/CurrentUserContext";
 
 
 function SignInForm() {
+    const setCurrentUser = useSetCurrentUser();
 
     const [signInData, setSignInData] = useState({
         username: "",
@@ -38,7 +40,8 @@ function SignInForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-          await axios.post("/dj-rest-auth/login/", signInData);
+          const {data} = await axios.post("/dj-rest-auth/login/", signInData);
+          setCurrentUser(data.user)
           history.push("/");
         } catch (err) {
           setErrors(err.response?.data);

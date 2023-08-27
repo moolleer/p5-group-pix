@@ -6,9 +6,32 @@ import Nav from "react-bootstrap/Nav";
 import logo from "../assets/logo.png"
 import styles from "../styles/NavBar.module.css"
 import { NavLink } from "react-router-dom";
+import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 
 const NavBar = () => {
+  const currentUser = useCurrentUser();
+
+  const loggedIn = <>{currentUser?.username}</>;
+  const loggedOut = (
+    <>
+      <NavLink 
+        to="/signin" 
+        className={styles.NavLink} 
+        activeClassName={styles.Active}
+      >
+        Sign in
+      </NavLink>
+      <NavLink 
+        to="/signup" 
+        className={styles.NavLink} 
+        activeClassName={styles.Active}
+      >
+        Sign up
+      </NavLink>
+    </>
+  );
+
   return (
     <Navbar expand="md" fixed="sticky-top" className={styles.CustomNavbar} >
       <Container>
@@ -26,12 +49,8 @@ const NavBar = () => {
             >
               Home
             </NavLink >
-            <NavLink to="/signin" className={styles.NavLink} activeClassName={styles.Active}>
-              Sign in
-            </NavLink>
-            <NavLink to="/signup" className={styles.NavLink} activeClassName={styles.Active}>
-              Sign up
-            </NavLink>
+
+            {currentUser ? loggedIn : loggedOut}
           </Nav>
         </Navbar.Collapse>
       </Container>
