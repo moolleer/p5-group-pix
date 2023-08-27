@@ -14,7 +14,12 @@
   font-weight: bold;
 }
 
-.Active i {
+.NavLink:hover {
+  color: #8c6e8c;
+  transition: color ease-in-out 0.3s;
+}
+
+.Active {
   color:#8c6e8c;
 }
 

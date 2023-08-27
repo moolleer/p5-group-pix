@@ -8,7 +8,9 @@ import styles from "../styles/NavBar.module.css"
 import { NavLink } from "react-router-dom";
 import { useCurrentUser } from '../contexts/CurrentUserContext';
 
-
+/**
+ * Navbar component to render all navigationlinks
+ */
 const NavBar = () => {
   const currentUser = useCurrentUser();
 
@@ -51,6 +53,7 @@ const NavBar = () => {
             </NavLink >
 
             {currentUser ? loggedIn : loggedOut}
+
           </Nav>
         </Navbar.Collapse>
       </Container>
