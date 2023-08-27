@@ -1,12 +1,18 @@
 .App {
-    font-family: 'Roboto Flex', sans-serif;
+  font-family: 'Roboto Flex', sans-serif;
+  color: #260925;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: 'Qwitcher Grypen', cursive, sans-serif;
+  font-size: 60px;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-image: linear-gradient(
-      to right,
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(to right,
       #edb689,
       #e6a38a,
       #d9938e,
@@ -18,9 +24,58 @@ body {
       #b77595,
       #c97894,
       #da7c91,
-      #ea818c
-    );
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-  }
+      #ea818c);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.Main {
+  padding-top: 40px;
+}
+
+.FillerImage {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.Image {
+  max-height: 40vh;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  transition: color ease-in-out 0.3s;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:hover i {
+  color: #CF6CC7;
+  transition: color ease-in-out 0.3s;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+i {
+  color: #cfced3;
+  font-size: 1.6rem;
+  padding: 7px;
+  vertical-align: middle;
+}
+
+i:hover {
+  cursor: pointer;
+  transition: color ease-in-out 0.3s;
+  color: #CF6CC7;
+}
