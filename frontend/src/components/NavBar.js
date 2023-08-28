@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
 import Avatar from "./Avatar";
 import axios from "axios";
+import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 /**
  * Navbar component to render all navigationlinks
@@ -16,6 +17,8 @@ import axios from "axios";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
     try {
@@ -84,13 +87,24 @@ const NavBar = () => {
   );
 
   return (
-    <Navbar expand="md" fixed="sticky-top" className={styles.CustomNavbar} >
+    <Navbar 
+      expanded={expanded}
+      expand="md" 
+      fixed="sticky-top" 
+      className={styles.CustomNavbar} 
+    >
       <Container>
-        <Navbar.Brand>
-          <img className={styles.Round} src={logo} alt="logo" height="120" />
-        </Navbar.Brand>
+        <NavLink to="/">
+          <Navbar.Brand>
+            <img className={styles.Round} src={logo} alt="logo" height="120" />
+          </Navbar.Brand>
+        </NavLink>
         {currentUser && loggedInProfile}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle 
+          ref={ref}
+          onClick={() => setExpanded(!expanded)}
+          aria-controls="basic-navbar-nav" 
+        />
         
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-center">
