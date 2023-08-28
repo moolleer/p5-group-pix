@@ -42,10 +42,6 @@ Users can create groups centered around specific interests, locations, or events
 
 ![Model](assets/readme_images/dbdiagram.png)
 
-### CRUD functionality
-
-![Model](assets/readme_images/CRUD.PNG)
-
 
 ## Skeleton
 
