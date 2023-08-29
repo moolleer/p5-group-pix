@@ -7,9 +7,14 @@ import SignUpForm from './components/pages/auth/SignUpForm';
 import SignInForm from './components/pages/auth/SignInForm';
 import GroupsCreateForm from './components/pages/groups/GroupsCreateForm';
 import GroupsPage from './components/pages/groups/GroupsPage';
+import MyGroupsPage from './components/pages/groups/MyGroupsPage';
+import { useCurrentUser } from './contexts/CurrentUserContext';
 
 
 function App() {
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
+  
   return (
       <div className={styles.App}>
         <NavBar />
@@ -18,11 +23,24 @@ function App() {
             <Route exact path="/" render={() => <h1>Home page</h1>} />
             <Route exact path="/signin" render={() => <SignInForm />} />
             <Route exact path="/signup" render={() => <SignUpForm />} />
-            <Route exact path="/groups" render={() => <GroupsPage />} />
+            <Route exact path="/groups/create" render={() => <GroupsCreateForm />} />
             <Route 
               exact 
-              path="/groups/create" 
-              render={() => <GroupsCreateForm message="No results found. Adjust the search keyword!" />} />
+              path="/groups" 
+              render={() => (
+                <GroupsPage 
+                message="No results found. Adjust the search keyword!" /> 
+              )}
+            />
+            <Route 
+              exact 
+              path="/my-groups" 
+              render={() => (
+                <MyGroupsPage  
+                filter={`created_by__profile=${profile_id}&`}
+                />
+              )}
+            />
             <Route render={() => <p>Page not found!</p>} />
           </Switch>
         </Container>

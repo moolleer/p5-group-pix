@@ -29,8 +29,8 @@ class GroupList(generics.ListCreateAPIView):
         DjangoFilterBackend, filters.SearchFilter,
         filters.OrderingFilter,
     ]
-    filterset_fields = ['created_by__username']
-    search_fields = ['name', 'created_by__username', 'description']
+    filterset_fields = ['created_by__profile']
+    search_fields = ['name', 'created_by__profile', 'description']
     ordering_fields = ['member_count']
 
 

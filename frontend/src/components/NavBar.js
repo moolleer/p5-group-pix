@@ -51,7 +51,7 @@ const NavBar = () => {
         View Groups
       </NavLink>
       <NavLink 
-        to="/groupmemberships/" 
+        to="/my-groups" 
         className={styles.NavLink} 
         activeClassName={styles.Active}
       >

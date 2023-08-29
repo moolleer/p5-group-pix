@@ -1,9 +1,13 @@
+.Card {
+    margin-top: 40px;
+}
+
 i {
     color: #7F5C7B;
 }
 
 .Footer {
-    background-color: #edb689;
+    background-color: rgba(237, 182, 137, 0.8);
     text-align: center;
-    
+    padding: 20px;
 }
