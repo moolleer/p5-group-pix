@@ -19,7 +19,10 @@ function App() {
             <Route exact path="/signin" render={() => <SignInForm />} />
             <Route exact path="/signup" render={() => <SignUpForm />} />
             <Route exact path="/groups" render={() => <GroupsPage />} />
-            <Route exact path="/groups/create" render={() => <GroupsCreateForm />} />
+            <Route 
+              exact 
+              path="/groups/create" 
+              render={() => <GroupsCreateForm message="No results found. Adjust the search keyword!" />} />
             <Route render={() => <p>Page not found!</p>} />
           </Switch>
         </Container>
