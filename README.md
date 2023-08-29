@@ -40,7 +40,38 @@ Users can create groups centered around specific interests, locations, or events
 
 ### Database Model
 
+To create the entity relationship diagram, I used [dbdiagram](https://dbdiagram.io/home). It shows the relationship between all models in the database.
+
 ![Model](assets/readme_images/dbdiagram.png)
+
+### Database
+
+For this project I used a PostgreSQL database hosted by [ElephantSQL](https://www.elephantsql.com/). 
+
+### Models
+
+#### Profiles
+
+| Database Value | Field Type     | Field Argument                 |
+|----------------| ---------------| -------------------------------|
+| owner          | ForeingKey     | User, on_delete=models.CASCADE |
+| join_date      | DateTimeField  | auto_now_add=True              |
+| last_login     | DateTimeField  | auto_now=True                  |
+| name           | CharField      | max_length=255, blank=True     |
+| content        | TextField      | blank=True                     | 
+|  profile_picture |ImageField    | upload_to='images/', default='../default_profile_eianob' |
+
+
+#### Groups
+
+| Database Value | Field Type     | Field Argument                 |
+|----------------| ---------------| -------------------------------|
+| name           |  CharField     | max_length=255                 |
+| description    |  TextField     |                                |
+| members        | ManyToManyField| User, through='GroupMembership', related_name='group_memberships'|
+| created_by     | ForeignKey     | User, on_delete=models.CASCADE, related_name='created_groups |
+| created_at     | DateTimeField  | auto_now_add=True | 
+
 
 
 ## Skeleton
