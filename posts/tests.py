@@ -7,6 +7,9 @@ from groups.models import Group, GroupMembership
 
 
 class PostCreateTests(APITestCase):
+    """
+    Tests for the Posts model create view
+    """
     def setUp(self):
         self.user = User.objects.create_user(
             username='testuser', password='testpassword'

@@ -50,7 +50,7 @@ For this project I used a PostgreSQL database hosted by [ElephantSQL](https://ww
 
 ### Models
 
-#### Profiles
+#### Profiles :
 
 | Database Value | Field Type     | Field Argument                 |
 |----------------| ---------------| -------------------------------|
@@ -62,7 +62,7 @@ For this project I used a PostgreSQL database hosted by [ElephantSQL](https://ww
 |  profile_picture |ImageField    | upload_to='images/', default='../default_profile_eianob' |
 
 
-#### Groups
+#### Groups :
 
 | Database Value | Field Type     | Field Argument                 |
 |----------------| ---------------| -------------------------------|
@@ -72,7 +72,37 @@ For this project I used a PostgreSQL database hosted by [ElephantSQL](https://ww
 | created_by     | ForeignKey     | User, on_delete=models.CASCADE, related_name='created_groups |
 | created_at     | DateTimeField  | auto_now_add=True | 
 
+#### Posts :
 
+| Database Value | Field Type     | Field Argument                 |
+|----------------| ---------------| -------------------------------|
+| owner          | ForeignKey     | User, on_delete=models.CASCADE |
+| group          | ForeignKey     | Group, on_delete=models.CASCADE |
+| title          | CharField      | max_length=255                 |
+| content        | TextField()    |                                |
+| created_at     | DateTimeField  | auto_now_add=True              |
+| updated_at     | DateTimeField  | auto_now=True                  |
+| image          | ImageField     |  upload_to='images/', default='../default_post_e3pet6.jpg', blank=True |
+
+#### Discussions :
+
+| Database Value | Field Type     | Field Argument                 |
+|----------------| ---------------| -------------------------------|
+| group          | ForeignKey    | Group, on_delete=models.CASCADE |
+| owner          | ForeignKey    | User, on_delete=models.CASCADE  |
+| title          | CharField     | max_length=255                  |
+| content        | TextField()   |                                 |
+| created_at     | DateTimeField | auto_now_add=True               |
+
+#### Comments :
+
+| Database Value | Field Type     | Field Argument                 |
+|----------------| ---------------| -------------------------------|
+| owner          | ForeignKey     | User, on_delete=models.CASCADE |
+| post           | ForeignKey     | Post, on_delete=models.CASCADE, related_name='posts' null=True, blank=True |
+| discussion     | ForeignKey     | Discussion, on_delete=models.CASCADE, related_name='comments' null=True, blank=True |
+| created_at     | DateTimeField  | auto_now_add=True |
+| updated_at     | DateTimeField  | auto_now=True content = models.TextField() |
 
 ## Skeleton
 
@@ -91,6 +121,8 @@ For this project I used a PostgreSQL database hosted by [ElephantSQL](https://ww
 ### Future Features
 
 ## Testing
+
+All testing information can be found here [testing.md](https://github.com/moolleer/p5-group-pix/blob/main/docs/testing.md)
 
 ## Deployment
 
