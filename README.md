@@ -120,6 +120,25 @@ For this project I used a PostgreSQL database hosted by [ElephantSQL](https://ww
 
 ### Future Features
 
+User stories:
+
+- As a group member, I can sort posts by different criteria such as most liked or most commented, so that I can explore popular content.
+
+- As a user, I can see a visual indicator (such as a badge) if a post has new comments since my last visit, so that I can feel encouraged to engage in active discussions.
+
+- As a group member, I can have the option to report inappropriate posts or comments so that I can contribute to maintain a positive and respectful community environment.
+
+- As a group member, I can receive notifications when someone replies to my comments or engages in discussions I've participated in, so that I can be up to date with other users interaction with me.
+
+- As a group member I can have the option to view my notifications, including likes, comments, and any mentions in discussions or comments so that I can interact and respond faster.
+
+- As a user I can connect my social media accounts to my profile so that I can make it easier for others to find me.
+
+- As a user, I can have the option to customize the profile and group page, so that I can personalize certain elements to reflect my identity and preferences.
+
+- As a user I can have the option to create private groups so that I can choose to accept wich users that can join and see the content.
+
+
 ## Testing
 
 All testing information can be found here [testing.md](https://github.com/moolleer/p5-group-pix/blob/main/docs/testing.md)
