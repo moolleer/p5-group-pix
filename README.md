@@ -143,6 +143,39 @@ User stories:
 
 All testing information can be found here [testing.md](https://github.com/moolleer/p5-group-pix/blob/main/docs/testing.md)
 
+## Technologies Used
+
+### Languages
+
+- Python - A programming language that provides the functionality for the DRF backend framework.
+
+### Frameworks
+
+- Django Rest Framework - A framework for building web API's
+
+### Packages
+
+- Github - Used to host the repository, store the commit history and manage the project board containing user stories and bug reports.
+- Heroku - Used to deploy the website
+- cloudinary - Easily integrate your application with Cloudinary
+- dj-database-url - Allows you to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application.
+- dj-rest-auth - API endpoints for handling authentication securely in Django Rest Framework
+- django-cloudinary-storage - package that facilitates integration with Cloudinary by implementing Django Storage API
+- gunicorn - A Python WSGI HTTP Server for UNIX.
+- Pillow - Adds image processing capabilities to your Python interpreter
+- psycopg2 - PostgreSQL database adapter for Python
+- pycodestyle - A tool to check your Python code against some of the style conventions in PEP 8.
+- requests - Allows you to send HTTP/1.1 requests
+
+### Other tools
+
+- django-filter - Django-filter is a reusable Django application allowing users to declaratively add dynamic QuerySet filtering from URL parameters.
+- django-rest-framework - web-browsable Web APIs.
+- djangorestframework-simplejwt - Simple JWT is a JSON Web Token authentication plugin for the Django REST Framework.
+- Cloudinary - Used to host all static files .
+
+
+
 ## Deployment
 
 ## Credits & Content
