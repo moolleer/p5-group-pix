@@ -12,6 +12,11 @@ Users can create groups centered around specific interests, locations, or events
 
 ### Project Goals
 
+The main goal of this project is to let users create an account where they can create groups to interact with other groupmembers trough posts, discussions and comments. The users should also be able to edit and delete their own interactions and account
+
+At the time when I am submitting this project, all goals is not complete. 
+The user can signup for an account, sign in and signout, view groups and create a group. 
+
 ### User Goals
 
 - As a user I want to upload, edit or delete a photo.
@@ -30,11 +35,101 @@ Users can create groups centered around specific interests, locations, or events
 
 ### User Stories
 
+The agile methodology were used throughout the project. I used the GitHub projects board to log all user stories as my project management tool. Creating epics and user storys for this project helped me to focus on the necessary tasks and a working environment the goals where easy to visualize.
+
+![project](/assets/readme_images/project.PNG)
+
 ### Scope
 
-#### EPIC:
+#### EPICS:
 
-##### User Stories
+- EPIC: User Account:
+  - USER STORY: User Registration
+  - USER STORY: Login
+  - USER STORY: Logout
+
+- EPIC: Navigation:
+  - USER STORY: Navigation Menu
+  - USER STORY: Search Bar
+  - USER STORY: Responsive Design
+
+- EPIC: Post:
+  - USER STORY: Upload Photo
+  - USER STORY: Photo Interaction
+  - USER STORY: User View Posts
+  - USER STORY: Title & Content
+  - USER STORY: Post History
+
+- EPIC: Post page:
+  - USER STORY: Post Details
+  - USER STORY: Likes & Comments
+  - USER STORY: Edit Post
+  - USER STORY: Delete Comment
+  - USER STORY: Comment Post
+  - USER STORY: Comment Time
+  - USER STORY: Read Comments
+  - USER STORY: Delete Own Comment
+  - USER STORY: Edit Own Comment
+
+- EPIC: Posts Pages:
+  - USER STORY: Posts Feed
+  - USER STORY: Search Posts
+  - USER STORY: Post Details
+  - USER STORY: Popularity
+  - USER STORY: Liked Posts
+  - USER STORY: Sort Posts
+  - USER STORY: Posts Profiles
+  - USER STORY: Comment Posts
+  - USER STORY: Infinite Scroll
+
+- EPIC: Authentication:
+  - USER STORY: Signup Details
+  - USER STORY: Email & Password
+  - USER STORY: Change Password
+  - USER STORY: Reset Password
+  - USER STORY: Social Media
+  - USER STORY: Secure Authentication Processes
+  - USER STORY: Session
+
+- EPIC: Group:
+  - USER STORY: Group Page
+  - USER STORY: Group Information
+  - USER STORY: Active Discussions
+  - USER STORY: Recent Posts User
+  - USER STORY: Number Of Members
+  - USER STORY: Join Group
+  - USER STORY: Leave Group
+  - USER STORY: Popular Groups
+  - USER STORY: Start Discussion
+
+- EPIC: Profile:
+  - USER STORY: Profile Page
+  - USER STORY: Profile Information
+  - USER STORY: Edit Profile
+  - USER STORY: User Posts
+  - USER STORY: User Statistics
+  - USER STORY: User Discussions
+  - USER STORY: Insights
+  - USER STORY: Group Member Posts
+  - USER STORY: Follow & Unfollow profile
+
+- EPIC: Discussion:
+  - USER STORY: Start Discussion
+  - USER STORY: Discussion Information
+  - USER STORY: Edit Discussion
+  - USER STORY: Delete Discussion
+  - USER STORY: Delete Comments
+  - USER STORY: Group Member Comments
+  - USER STORY: Like Comments
+  - USER STORY: Images
+  - USER STORY: Comment
+  - USER STORY: Discussion Popularity
+  - USER STORY: Discussion Feed
+
+#### User Stories
+
+All user stories can be found [here](https://github.com/moolleer/p5-group-pix/issues)
+
 
 ## Structure
 
