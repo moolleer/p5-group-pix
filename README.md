@@ -108,6 +108,20 @@ For this project I used a PostgreSQL database hosted by [ElephantSQL](https://ww
 
 ### Wireframes
 
+Wireframes created using [Balsamiq](https://balsamiq.com/) to plan the general flow and display of Group Pix. Some differences may be found between the original wireframes and the finished site due to design choices made during the project process.
+
+- [Home page](/assets/readme_images/homepage.png)
+- [Home page signed in](/assets/readme_images/homepage-loged-in.png)
+- [My account](/assets/readme_images/My%20account.png)
+- [Sign in](/assets/readme_images/signin.png)
+- [Signup](/assets/readme_images/signup.png)
+- [Post](/assets/readme_images/Post.png)
+- [Posts](/assets/readme_images/Posts.png)
+- [Groups](/assets/readme_images/groups.png)
+- [Group page](/assets/readme_images/group%20page.png)
+- [Discussions](/assets/readme_images/Discussions.png)
+- [Discussion](/assets/readme_images/Discussion.png)
+
 ## Surface
 
 ## Features
@@ -177,6 +191,8 @@ All testing information can be found here [testing.md](https://github.com/moolle
 
 
 ## Deployment
+
+
 
 ## Credits & Content
 
