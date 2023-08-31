@@ -38,6 +38,10 @@ Users can create groups centered around specific interests, locations, or events
 
 ## Structure
 
+The overall structure of the project was modelled on the [drf-api](https://github.com/Code-Institute-Solutions/drf-api) walkthrough due to time constraints and the Project 5 assessments requirements including most of what is included in the walkthrough project.
+
+However, additional custom models have also been developed where possible such as groups, and discussions, and I have tried to customize the walkthrough models as well to fit more closely with the scope of my own sharing platform.
+
 ### Database Model
 
 To create the entity relationship diagram, I used [dbdiagram](https://dbdiagram.io/home). It shows the relationship between all models in the database.
@@ -195,6 +199,8 @@ All testing information can be found here [testing.md](https://github.com/moolle
 
 
 ## Credits & Content
+
+- [CI Moments](https://github.com/Code-Institute-Solutions/moments)
 
 ### Media
 
