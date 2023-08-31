@@ -4,6 +4,10 @@
 
 #### Manual Testing
 
+All tests done have passed.
+
+Tests:
+
 Profile: 
 
 - A user who is not signed in can't access Profiles in Profile List or Profile Detail.
